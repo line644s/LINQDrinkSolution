@@ -30,13 +30,13 @@ namespace LINQDrink
             //var dnames = from drink in drinks
             //    select drink.Name;
 
-            var dnames = drinks.Select(d => d.Name);
+            
             Console.WriteLine("Drinks");
-            foreach (var dname in dnames)
-            {
-                Console.WriteLine($"{dname}");
-            }
-
+            //foreach (var dname in dnames)
+            //{
+            //    Console.WriteLine($"{dname}");
+            //}
+            drinks.Select(d => d.Name).ToList().ForEach(Console.WriteLine);
             Console.WriteLine();
             Console.WriteLine("Drinks uden alkohol:");
 
@@ -44,12 +44,12 @@ namespace LINQDrink
             //    where drink.AlcoholicPartAmount == 0
             //    select drink.Name;
 
-            var drinksUdenAlkohol = drinks.Where(d => d.AlcoholicPartAmount == 0).Select(d => d.Name);
+            drinks.Where(d => d.AlcoholicPartAmount == 0).Select(d => d.Name).ToList().ForEach(Console.WriteLine);
 
-            foreach (var drink in drinksUdenAlkohol)
-            {
-                Console.WriteLine(drink);
-            }
+            //foreach (var drink in drinksUdenAlkohol)
+            //{
+            //    Console.WriteLine(drink);
+            //}
 
             Console.WriteLine();
             Console.WriteLine("Alkoholiske drinks");
@@ -61,14 +61,14 @@ namespace LINQDrink
             //        DrinksMedAlkohol = "drink: " + drink.Name + " Alkohol: "+ drink.AlcoholicPart + " " + drink.AlcoholicPart + "Amount: " +
             //                           drink.AlcoholicPartAmount
             //    };
-            var drinksMedAlkohol = drinks.Where(d => d.AlcoholicPartAmount > 0).Select(d =>
+            drinks.Where(d => d.AlcoholicPartAmount > 0).Select(d =>
                 "drink: " + d.Name + " Alkohol: " + d.AlcoholicPart + " " + d.AlcoholicPart + "Amount: " +
-                d.AlcoholicPartAmount);
+                d.AlcoholicPartAmount).ToList().ForEach(Console.WriteLine);
 
-            foreach (var drink in drinksMedAlkohol)
-            {
-                Console.WriteLine(drink);
-            }
+            //foreach (var drink in drinksMedAlkohol)
+            //{
+            //    Console.WriteLine(drink);
+            //}
 
             Console.WriteLine();
             Console.WriteLine("drinks i alfabetisk orden");
@@ -77,11 +77,11 @@ namespace LINQDrink
             //    orderby drink.Name
             //    select drink.Name;
 
-            var soteretDrinks = drinks.OrderBy(d => d.Name).Select(d=> d.Name);
-            foreach (var soteretDrink in soteretDrinks)
-            {
-                Console.WriteLine(soteretDrink);
-            }
+            drinks.OrderBy(d => d.Name).Select(d=> d.Name).ToList().ForEach(Console.WriteLine);
+            //foreach (var soteretDrink in soteretDrinks)
+            //{
+            //    Console.WriteLine(soteretDrink);
+            //}
 
             Console.WriteLine();
             Console.WriteLine("Den totale mængde alkohol");
